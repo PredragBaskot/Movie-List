@@ -1,22 +1,20 @@
-
-import React from 'react';
-import './App.css';
-import { Layout } from 'antd';
+import React from "react";
+import "./App.css";
+import { Layout } from "antd";
+import Sidebar from "./components/Sidebar.js";
 
 const { Header, Sider, Content } = Layout;
 
-
 function App() {
-
-
   return (
     <div className="App">
       <Layout>
-        <Sider></Sider>
+        <Sider>
+          <Sidebar />
+        </Sider>
         <Layout>
           <Header></Header>
           <Content></Content>
-
         </Layout>
       </Layout>
     </div>
