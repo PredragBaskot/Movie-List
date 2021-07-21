@@ -1,19 +1,9 @@
 import React from "react";
 import "./App.css";
 import { Layout } from "antd";
-import Sidebar from "./components/Sidebar.js";
-import AppHeader from "./components/AppHeader";
-import Searchbar from "./components/SearchHeader/Searchbar";
-
-
-
-
-
-
-
-
-
-
+import Searchbar from "./components/Searchbar/Searchbar";
+import AppHeader from "./components/AppHeader/AppHeader";
+import Sidebar from "./components/Sidebar/Sidebar";
 
 const { Header, Sider, Content } = Layout;
 
