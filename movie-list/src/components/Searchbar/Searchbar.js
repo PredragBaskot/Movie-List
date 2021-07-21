@@ -1,12 +1,15 @@
-import { Input } from "antd";
+import { Space, Input } from "antd";
 import React from "react";
 import "./Searchbar.css";
 
-const Searchbar = () => {
+const { Search } = Input;
+
+const Searchbar = (props) => {
   return (
-    <div className="search">
-      <Input size="default" placeholder="Search movies" />
-    </div>
+    <Space>
+      <Search className="search" placeholder="Search movies" enterButton value={props.value}
+        onChange={(event) => props.setSearchValue(event.target.value)} />
+    </Space>
   );
 };
 
