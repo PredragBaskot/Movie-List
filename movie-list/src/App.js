@@ -2,6 +2,18 @@ import React from "react";
 import "./App.css";
 import { Layout } from "antd";
 import Sidebar from "./components/Sidebar.js";
+import AppHeader from "./components/AppHeader";
+import Searchbar from "./components/SearchHeader/Searchbar";
+
+
+
+
+
+
+
+
+
+
 
 const { Header, Sider, Content } = Layout;
 
@@ -13,7 +25,10 @@ function App() {
           <Sidebar />
         </Sider>
         <Layout>
-          <Header></Header>
+          <Header>
+            <AppHeader></AppHeader>
+            <Searchbar />
+          </Header>
           <Content></Content>
         </Layout>
       </Layout>
