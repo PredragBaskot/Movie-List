@@ -41,7 +41,7 @@ const App = () => {
             <Searchbar
               searchValue={searchValue}
               setSearchValue={setSearchValue}
-            ></Searchbar>
+            />
           </Header>
 
           <Content>
