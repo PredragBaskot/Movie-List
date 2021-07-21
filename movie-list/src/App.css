@@ -28,7 +28,7 @@
   min-height: 700px;
   color: #fff;
   line-height: 120px;
-  background: rgb(174, 181, 185);
+  background: white;
 }
 [data-theme="dark"] .ant-layout-content {
   background: #0b0c0c;
