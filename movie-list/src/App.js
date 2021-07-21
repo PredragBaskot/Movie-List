@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import "./App.css";
 import { Layout } from "antd";
 import Searchbar from "./components/Searchbar/Searchbar";
@@ -7,13 +7,11 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import MovieListHeading from "./components/Movie/MovieListHeading";
 import MovieList from "./components/Movie/MovieList";
 
-
 const { Header, Sider, Content } = Layout;
-
 
 const App = () => {
   const [movies, setMovies] = useState([]);
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
 
   const getMovieRequest = async (searchValue) => {
     const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=ccb01116`;
@@ -23,52 +21,37 @@ const App = () => {
 
     if (responseJson.Search) {
       setMovies(responseJson.Search);
-
     }
-
   };
 
   useEffect(() => {
     getMovieRequest(searchValue);
   }, [searchValue]);
 
-
-
   return (
-
     <div className="App">
       <Layout>
-
-
         <Sider>
           <Sidebar />
         </Sider>
         <Layout>
-
           <Header>
-
             <AppHeader />
 
-            <Searchbar searchValue={searchValue} setSearchValue={setSearchValue}></Searchbar>
+            <Searchbar
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+            />
           </Header>
 
-
           <Content>
-
-            <MovieList
-              movies={movies} />
+            <MovieList movies={movies} />
             <MovieListHeading />
           </Content>
         </Layout>
       </Layout>
-
     </div>
-
   );
 };
-
-
-
-
 
 export default App;

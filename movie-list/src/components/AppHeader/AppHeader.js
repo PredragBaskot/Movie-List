@@ -1,21 +1,26 @@
 import React from "react";
 import "antd/dist/antd.css";
-import { Menu, Dropdown, Button } from "antd";
+import { Select } from "antd";
 import "./AppHeader.css";
 
+const { Option } = Select;
+
 function AppHeader() {
-  const menu = (
-    <Menu>
-      <Menu.Item key="1">MOVIE</Menu.Item>
-      <Menu.Item key="2">SERIES</Menu.Item>
-      <Menu.Item key="3">TV SHOW</Menu.Item>
-    </Menu>
-  );
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
+
   return (
     <>
-      <Dropdown overlay={menu} className="btn-dropdown">
-        <Button>TYPE</Button>
-      </Dropdown>
+      <Select
+        defaultValue="MOVIES"
+        onChange={handleChange}
+        className="btn-select"
+      >
+        <Option value="movies">MOVIES</Option>
+        <Option value="series">SERIES</Option>
+        <Option value="tvshow">TV SHOW</Option>
+      </Select>
     </>
   );
 }
