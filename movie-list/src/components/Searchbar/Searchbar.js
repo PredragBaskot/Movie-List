@@ -7,8 +7,13 @@ const { Search } = Input;
 const Searchbar = (props) => {
   return (
     <Space>
-      <Search className="search" placeholder="Search movies" enterButton value={props.value}
-        onChange={(event) => props.setSearchValue(event.target.value)} />
+      <Search
+        className="search"
+        placeholder="Search movies"
+        enterButton
+        value={props.value}
+        onChange={(event) => props.setSearchValue(event.target.value)}
+      />
     </Space>
   );
 };
