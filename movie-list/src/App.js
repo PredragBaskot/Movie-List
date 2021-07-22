@@ -12,9 +12,10 @@ const { Header, Sider, Content } = Layout;
 const App = () => {
   const [movies, setMovies] = useState([]);
   const [searchValue, setSearchValue] = useState("");
+  const [year, setYear] = useState("");
 
-  const getMovieRequest = async (searchValue) => {
-    const url = `http://www.omdbapi.com/?s=${searchValue}&apikey=ccb01116`;
+  const getMovieRequest = async () => {
+    const url = `http://www.omdbapi.com/?apikey=ccb01116&s=${searchValue}&y=${year}`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
@@ -26,13 +27,13 @@ const App = () => {
 
   useEffect(() => {
     getMovieRequest(searchValue);
-  }, [searchValue]);
+  }, [searchValue, year]);
 
   return (
     <div className="App">
       <Layout>
         <Sider>
-          <Sidebar />
+          <Sidebar onSelect={setYear} />
         </Sider>
         <Layout>
           <Header>
@@ -45,8 +46,10 @@ const App = () => {
           </Header>
 
           <Content>
-            <MovieList movies={movies} />
             <MovieListHeading />
+            <div className="movieList">
+              <MovieList movies={movies} />
+            </div>
           </Content>
         </Layout>
       </Layout>
