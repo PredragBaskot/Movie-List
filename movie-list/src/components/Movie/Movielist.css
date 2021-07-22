@@ -1,3 +1,8 @@
-.movie-listing {
-  display: inline-flex;
+.movie img {
+  height: 350px;
+  width: 320px;
+}
+
+.movie {
+  margin-bottom: 20px;
 }
