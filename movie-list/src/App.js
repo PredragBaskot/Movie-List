@@ -6,15 +6,14 @@ import AppHeader from "./components/AppHeader/AppHeader";
 import Sidebar from "./components/Sidebar/Sidebar";
 import MovieListHeading from "./components/Movie/MovieListHeading";
 import MovieList from "./components/Movie/MovieList";
-
-
+import MyPagination from "./components/Pagination/Pagination";
 
 const { Header, Sider, Content } = Layout;
 
 const RESULT_TYPES = [
-  { key: 'movie', label: 'MOVIE' },
-  { key: 'series', label: 'SERIES' },
-  { key: 'episode', label: 'EPISODE' },
+  { key: "movie", label: "MOVIE" },
+  { key: "series", label: "SERIES" },
+  { key: "episode", label: "EPISODE" },
 ];
 
 const App = () => {
@@ -23,10 +22,12 @@ const App = () => {
   const [searchValue, setSearchValue] = useState("");
   const [year, setYear] = useState("");
   const [type, setType] = useState(RESULT_TYPES[0].key);
-
+  const [page, setPage] = useState([]);
 
   const getMovieRequest = async () => {
-    const url = `http://www.omdbapi.com/?apikey=ccb01116&s=${searchValue || 'white'}&y=${year}&type=${type}`;
+    const url = `http://www.omdbapi.com/?apikey=ccb01116&s=${
+      searchValue || "white"
+    }&y=${year}&type=${type}&page=${page}`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
@@ -36,9 +37,11 @@ const App = () => {
       setSearchError(null);
     }
 
-    if (responseJson.Response === 'False') {
+    if (responseJson.Response === "False") {
       setMovies([]);
-      setSearchError(responseJson.Error || 'Something went wrong! Please try again!');
+      setSearchError(
+        responseJson.Error || "Something went wrong! Please try again!"
+      );
     }
   };
 
@@ -60,7 +63,6 @@ const App = () => {
       <Layout>
         <Sider>
           <Sidebar onSelect={setYear} />
-
         </Sider>
 
         <Layout>
@@ -76,12 +78,12 @@ const App = () => {
           <Content>
             <MovieListHeading />
             <div className="movieList">
-              <span style={{ color: 'red' }}>{searchError}</span>
+              <span style={{ color: "red" }}>{searchError}</span>
               <MovieList movies={movies} />
             </div>
+            <MyPagination onChange={setPage} />
           </Content>
         </Layout>
-
       </Layout>
     </div>
   );
