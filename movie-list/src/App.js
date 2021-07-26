@@ -6,7 +6,7 @@ import AppHeader from "./components/AppHeader/AppHeader";
 import Sidebar from "./components/Sidebar/Sidebar";
 import MovieListHeading from "./components/Movie/MovieListHeading";
 import MovieList from "./components/Movie/MovieList";
-import MyPagination from "./components/Pagination/Pagination";
+import { Pagination } from "antd";
 
 const { Header, Sider, Content } = Layout;
 
@@ -23,6 +23,9 @@ const App = () => {
   const [year, setYear] = useState("");
   const [type, setType] = useState(RESULT_TYPES[0].key);
   const [page, setPage] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [postPerPage] = useState(10); // if not changing in future, make it const not state
+  const [currentPosts] = useState([]);
 
   const getMovieRequest = async () => {
     const url = `http://www.omdbapi.com/?apikey=ccb01116&s=${
@@ -34,11 +37,13 @@ const App = () => {
 
     if (responseJson.Search) {
       setMovies(responseJson.Search);
+      setTotal(responseJson.totalResults);
       setSearchError(null);
     }
 
     if (responseJson.Response === "False") {
       setMovies([]);
+      setTotal(0);
       setSearchError(
         responseJson.Error || "Something went wrong! Please try again!"
       );
@@ -49,7 +54,7 @@ const App = () => {
     // if (true) {
     getMovieRequest(searchValue);
     // }
-  }, [searchValue, year, type]);
+  }, [searchValue, year, type, page]);
 
   useEffect(() => {
     if (!searchValue.trim()) {
@@ -78,10 +83,21 @@ const App = () => {
           <Content>
             <MovieListHeading />
             <div className="movieList">
-              <span style={{ color: "red" }}>{searchError}</span>
+              {searchError}
               <MovieList movies={movies} />
+              {currentPosts.map((movie) => (
+                <div key={movie.imdbID}>{movie.Poster}</div>
+              ))}
+              <Pagination
+                onChange={(value) => setPage(value)}
+                pageSize={postPerPage}
+                total={total}
+                current={page}
+                pageSizeOptions={[2, 5, 10]}
+                showSizeChanger={true}
+                responsive={true}
+              />
             </div>
-            <MyPagination onChange={setPage} />
           </Content>
         </Layout>
       </Layout>
