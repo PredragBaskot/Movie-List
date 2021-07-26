@@ -5,21 +5,17 @@ import "./AppHeader.css";
 
 const { Option } = Select;
 
-function AppHeader() {
-  const handleChange = (value) => {
-    console.log(`selected ${value}`);
-  };
+const AppHeader = ({ onSelect, types }) => {
+
 
   return (
     <>
       <Select
-        defaultValue="MOVIES"
-        onChange={handleChange}
+        defaultValue={types[0].label}
         className="btn-select"
+        onSelect={onSelect}
       >
-        <Option value="movies">MOVIES</Option>
-        <Option value="series">SERIES</Option>
-        <Option value="tvshow">TV SHOW</Option>
+        {types.map(({ key, label }) => <Option value={key}>{label}</Option>)}
       </Select>
     </>
   );
