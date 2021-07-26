@@ -3,6 +3,7 @@ import "./Movielist.css";
 
 
 const MovieList = (props) => {
+    console.log(props.movies);
     return (
         <>
             {props.movies.map((movie, index) => (
