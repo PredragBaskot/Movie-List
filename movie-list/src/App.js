@@ -7,6 +7,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import MovieListHeading from "./components/Movie/MovieListHeading";
 import MovieList from "./components/Movie/MovieList";
 import { Pagination } from "antd";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 const { Header, Sider, Content } = Layout;
 
@@ -80,25 +81,31 @@ const App = () => {
             />
           </Header>
 
-          <Content>
-            <MovieListHeading />
-            <div className="movieList">
-              {searchError}
-              <MovieList movies={movies} />
-              {currentPosts.map((movie) => (
-                <div key={movie.imdbID}>{movie.Poster}</div>
-              ))}
-              <Pagination
-                onChange={(value) => setPage(value)}
-                pageSize={postPerPage}
-                total={total}
-                current={page}
-                pageSizeOptions={[2, 5, 10]}
-                showSizeChanger={true}
-                responsive={true}
-              />
-            </div>
-          </Content>
+          <Router>
+            <Switch>
+              <Route path="/">
+                <Content>
+                  <MovieListHeading />
+                  <div className="movieList">
+                    {searchError}
+                    <MovieList movies={movies} />
+                    {currentPosts.map((movie) => (
+                      <div key={movie.imdbID}>{movie.Poster}</div>
+                    ))}
+                    <Pagination
+                      onChange={(value) => setPage(value)}
+                      pageSize={postPerPage}
+                      total={total}
+                      current={page}
+                      pageSizeOptions={[2, 5, 10]}
+                      showSizeChanger={true}
+                      responsive={true}
+                    />
+                  </div>
+                </Content>
+              </Route>
+            </Switch>
+          </Router>
         </Layout>
       </Layout>
     </div>
