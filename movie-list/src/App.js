@@ -12,9 +12,9 @@ import Details from "./components/Details/Details";
 const { Header, Sider, Content } = Layout;
 
 const RESULT_TYPES = [
-  { key: "movie", label: "MOVIE" },
-  { key: "series", label: "SERIES" },
-  { key: "episode", label: "EPISODE" },
+  { key: 'movie', label: 'MOVIE' },
+  { key: 'series', label: 'SERIES' },
+  { key: 'episode', label: 'EPISODE' },
 ];
 
 const App = () => {
@@ -23,26 +23,24 @@ const App = () => {
   const [searchValue, setSearchValue] = useState("");
   const [year, setYear] = useState("");
   const [type, setType] = useState(RESULT_TYPES[0].key);
-  const [page, setPage] = useState([]);
+  const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
-  const [postPerPage] = useState(10); // if not changing in future, make it const not state
+  const [postPerPage] = useState(10);
   const [currentPosts] = useState([]);
 
   const getMovieRequest = async () => {
-    const url = `http://www.omdbapi.com/?apikey=ccb01116&s=${
-      searchValue || "white"
-    }&y=${year}&type=${type}&page=${page}`;
+    const url = `http://www.omdbapi.com/?apikey=ccb01116&s=${searchValue || "white"}&y=${year}&type=${type}&page=${page}`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
 
     if (responseJson.Search) {
       setMovies(responseJson.Search);
-      setTotal(responseJson.totalResults);
       setSearchError(null);
+      setTotal(responseJson.totalResults);
     }
 
-    if (responseJson.Response === "False") {
+    if (responseJson.Response === 'False') {
       setMovies([]);
       setTotal(0);
       setSearchError(
@@ -108,9 +106,10 @@ const App = () => {
               </div>
             </Content>
           </Router>
+
         </Layout>
-      </Layout>
-    </div>
+      </Layout >
+    </div >
   );
 };
 
