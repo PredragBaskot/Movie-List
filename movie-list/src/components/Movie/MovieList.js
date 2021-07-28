@@ -1,3 +1,4 @@
+import { Button } from "antd";
 import React from "react";
 import "./Movielist.css";
 
@@ -9,6 +10,7 @@ const MovieList = (props) => {
           <img src={movie.Poster === 'N/A' ? "https://i.redd.it/ds1luav7dl851.jpg" : movie.Poster} alt="movie" />
         </div>
       ))}
+      <Button></Button>
     </>
   );
 };
