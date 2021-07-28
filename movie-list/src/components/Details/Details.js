@@ -1,11 +1,11 @@
 import React from "react";
 
-function Favorites() {
+function Details() {
   return (
     <div className="Favorites">
-      <h1>Favorites</h1>
+      <h1>Details</h1>
     </div>
   );
 }
 
-export default Favorites;
+export default Details;

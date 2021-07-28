@@ -4,10 +4,10 @@ import { Layout } from "antd";
 import Searchbar from "./components/Searchbar/Searchbar";
 import AppHeader from "./components/AppHeader/AppHeader";
 import Sidebar from "./components/Sidebar/Sidebar";
-import MovieListHeading from "./components/Movie/MovieListHeading";
-import MovieList from "./components/Movie/MovieList";
-import { Pagination } from "antd";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Favorites from "./components/Favorites/Favorites";
+import Home from "./components/Home/Home.js";
+import Details from "./components/Details/Details";
 
 const { Header, Sider, Content } = Layout;
 
@@ -80,31 +80,33 @@ const App = () => {
               setSearchValue={setSearchValue}
             />
           </Header>
-
           <Router>
-            <Switch>
-              <Route path="/">
-                <Content>
-                  <MovieListHeading />
-                  <div className="movieList">
-                    {searchError}
-                    <MovieList movies={movies} />
-                    {currentPosts.map((movie) => (
-                      <div key={movie.imdbID}>{movie.Poster}</div>
-                    ))}
-                    <Pagination
-                      onChange={(value) => setPage(value)}
-                      pageSize={postPerPage}
-                      total={total}
-                      current={page}
-                      pageSizeOptions={[2, 5, 10]}
-                      showSizeChanger={true}
-                      responsive={true}
-                    />
-                  </div>
-                </Content>
-              </Route>
-            </Switch>
+            <Content>
+              <div>
+                <Switch>
+                  <Route
+                    path="/home"
+                    component={() => (
+                      <Home
+                        searchError={searchError}
+                        movies={movies}
+                        currentPosts={currentPosts}
+                        setPage={setPage}
+                        postPerPage={postPerPage}
+                        total={total}
+                        page={page}
+                      />
+                    )}
+                  />
+                  <Route path="/favorites">
+                    <Favorites />
+                  </Route>
+                  <Route path="/details">
+                    <Details />
+                  </Route>
+                </Switch>
+              </div>
+            </Content>
           </Router>
         </Layout>
       </Layout>
