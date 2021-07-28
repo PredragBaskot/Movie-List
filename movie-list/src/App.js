@@ -8,13 +8,14 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Favorites from "./components/Favorites/Favorites";
 import Home from "./components/Home/Home.js";
 import Details from "./components/Details/Details";
+import MyBreadcrumb from "./components/Breadcrumb/Breadcrump";
 
 const { Header, Sider, Content } = Layout;
 
 const RESULT_TYPES = [
-  { key: 'movie', label: 'MOVIE' },
-  { key: 'series', label: 'SERIES' },
-  { key: 'episode', label: 'EPISODE' },
+  { key: "movie", label: "MOVIE" },
+  { key: "series", label: "SERIES" },
+  { key: "episode", label: "EPISODE" },
 ];
 
 const App = () => {
@@ -29,7 +30,9 @@ const App = () => {
   const [currentPosts] = useState([]);
 
   const getMovieRequest = async () => {
-    const url = `http://www.omdbapi.com/?apikey=ccb01116&s=${searchValue || "white"}&y=${year}&type=${type}&page=${page}`;
+    const url = `http://www.omdbapi.com/?apikey=ccb01116&s=${
+      searchValue || "white"
+    }&y=${year}&type=${type}&page=${page}`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
@@ -40,7 +43,7 @@ const App = () => {
       setTotal(responseJson.totalResults);
     }
 
-    if (responseJson.Response === 'False') {
+    if (responseJson.Response === "False") {
       setMovies([]);
       setTotal(0);
       setSearchError(
@@ -71,6 +74,7 @@ const App = () => {
 
         <Layout>
           <Header>
+            <MyBreadcrumb />
             <AppHeader onSelect={setType} types={RESULT_TYPES} />
 
             <Searchbar
@@ -106,10 +110,9 @@ const App = () => {
               </div>
             </Content>
           </Router>
-
         </Layout>
-      </Layout >
-    </div >
+      </Layout>
+    </div>
   );
 };
 
