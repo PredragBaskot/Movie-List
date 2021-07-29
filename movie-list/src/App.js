@@ -87,7 +87,7 @@ const App = () => {
               <div>
                 <Switch>
                   <Route
-                    path="/home"
+                    exact path="/home"
                     component={() => (
                       <Home
                         searchError={searchError}
@@ -100,10 +100,10 @@ const App = () => {
                       />
                     )}
                   />
-                  <Route path="/favorites">
+                  <Route exact path="/favorites">
                     <Favorites />
                   </Route>
-                  <Route path="/details">
+                  <Route path="/details/:id">
                     <Details />
                   </Route>
                 </Switch>
