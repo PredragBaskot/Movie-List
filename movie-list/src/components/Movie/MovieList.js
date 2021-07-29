@@ -1,13 +1,15 @@
-import { Button } from "antd";
 import React from "react";
 import "./Movielist.css";
+import { Link } from "react-router-dom";
 
 const MovieList = (props) => {
   return (
     <>
       {props.movies.map((movie, index) => (
         <div className="movie" key={movie.imdbID}>
-          <img src={movie.Poster === 'N/A' ? "https://i.redd.it/ds1luav7dl851.jpg" : movie.Poster} alt="movie" />
+            <Link to={`/details/${movie.imdbID}`}>
+              <img src={movie.Poster === 'N/A' ? "https://i.redd.it/ds1luav7dl851.jpg" : movie.Poster} alt="movie" />
+            </Link>
         </div>
       ))}
 
@@ -15,4 +17,6 @@ const MovieList = (props) => {
   );
 };
 
+
 export default MovieList;
+
