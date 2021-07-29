@@ -10,6 +10,7 @@ import Home from "./components/Home/Home.js";
 import Details from "./components/Details/Details";
 import MyBreadcrumb from "./components/Breadcrumb/Breadcrump";
 
+
 const { Header, Sider, Content } = Layout;
 
 const RESULT_TYPES = [
@@ -29,10 +30,14 @@ const App = () => {
   const [postPerPage] = useState(10);
   const [currentPosts] = useState([]);
 
+
+
+
+
+
   const getMovieRequest = async () => {
-    const url = `http://www.omdbapi.com/?apikey=ccb01116&s=${
-      searchValue || "white"
-    }&y=${year}&type=${type}&page=${page}`;
+    const url = `http://www.omdbapi.com/?apikey=ccb01116&s=${searchValue || "white"
+      }&y=${year}&type=${type}&page=${page}`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
@@ -66,6 +71,7 @@ const App = () => {
   }, [searchValue]);
 
   return (
+
     <div className="App">
       <Layout>
         <Sider>
@@ -73,6 +79,8 @@ const App = () => {
         </Sider>
 
         <Layout>
+
+
           <Header>
             <MyBreadcrumb />
             <AppHeader onSelect={setType} types={RESULT_TYPES} />
@@ -113,6 +121,7 @@ const App = () => {
         </Layout>
       </Layout>
     </div>
+
   );
 };
 

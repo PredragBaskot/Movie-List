@@ -18,7 +18,7 @@ const Home = ({
     <div className="home">
       <MovieListHeading />
       <div className="movieList">
-        {searchError}
+        {searchError ? <span style={{ color: 'red' }}>{searchError} </span> : null}
         <MovieList movies={movies} />
         {currentPosts.map((movie) => (
           <div key={movie.imdbID}>{movie.Poster}</div>
@@ -28,7 +28,6 @@ const Home = ({
           pageSize={postPerPage}
           total={total}
           current={page}
-          pageSizeOptions={[2, 5, 10]}
           showSizeChanger={true}
           responsive={true}
         />
