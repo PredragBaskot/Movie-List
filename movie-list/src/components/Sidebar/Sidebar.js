@@ -1,7 +1,7 @@
 import React from "react";
 import "antd/dist/antd.css";
 import "./Sidebar.css";
-import { Button, Menu } from "antd";
+import { Menu } from "antd";
 
 const { SubMenu } = Menu;
 
@@ -46,7 +46,9 @@ const Sidebar = ({ onSelect }) => {
             2016
           </Menu.Item>
         </SubMenu>
-        <Menu.Item>Favourites</Menu.Item>
+        <Menu.Item key="favourites">
+          <a href="/favorites">Favourites</a>
+        </Menu.Item>
       </Menu>
     </div>
   );

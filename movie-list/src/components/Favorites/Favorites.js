@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import MovieList from "../Movie/MovieList";
+import "./Favorites.css";
 
 function Favorites() {
+  const [favorites, setFavorites] = useState([]);
+
+  useEffect(() => {
+    const favoritesFromLocalStorage =
+      JSON.parse(localStorage.getItem("favorites")) ?? [];
+    setFavorites(favoritesFromLocalStorage);
+  }, []);
+
   return (
-    <div className="Favorites">
+    <div>
       <h1>Favorites</h1>
+      <div className="favorites">
+        <MovieList movies={favorites} />
+      </div>
     </div>
   );
 }
