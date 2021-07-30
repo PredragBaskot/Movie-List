@@ -6,8 +6,6 @@ import "./AppHeader.css";
 const { Option } = Select;
 
 const AppHeader = ({ onSelect, types }) => {
-
-
   return (
     <>
       <Select
@@ -15,10 +13,14 @@ const AppHeader = ({ onSelect, types }) => {
         className="btn-select"
         onSelect={onSelect}
       >
-        {types.map(({ key, label }) => <Option value={key}>{label}</Option>)}
+        {types.map(({ key, label }) => (
+          <Option key={key} value={key}>
+            {label}
+          </Option>
+        ))}
       </Select>
     </>
   );
-}
+};
 
 export default AppHeader;
