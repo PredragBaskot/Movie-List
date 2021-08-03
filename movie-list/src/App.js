@@ -105,7 +105,7 @@ const App = () => {
                     <Favorites />
                   </Route>
                   <Route path="/details/:id">
-                    <Details />
+                    <Details hasFavoritesButton={true} />
                   </Route>
                 </Switch>
               </div>

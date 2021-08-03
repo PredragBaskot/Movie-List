@@ -4,18 +4,6 @@ import { Link } from "react-router-dom";
 import AddFavourites from "../Favorites/AddFavourites";
 
 const MovieList = (props) => {
-  const addToFavorites = (movie) => {
-    let newStorageArray = [movie];
-    const favoritesFromStorage = JSON.parse(localStorage.getItem("favorites"));
-    if (favoritesFromStorage) {
-      newStorageArray = [...newStorageArray, ...favoritesFromStorage];
-    }
-    console.log(newStorageArray);
-
-    // favoritesFromStorage.push(movie);
-    // console.log(favoritesFromStorage);
-    localStorage.setItem("favorites", JSON.stringify(newStorageArray));
-  };
 
   return (
     <>
@@ -33,7 +21,7 @@ const MovieList = (props) => {
           </Link>
           {props.hasFavoritesButton ? (
             <div className="overlay">
-              <AddFavourites onAdd={() => addToFavorites(movie)} />
+              <AddFavourites movie={movie} />
             </div>
           ) : null}
         </div>

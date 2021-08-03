@@ -14,16 +14,6 @@ const Home = ({
   total,
   page,
 }) => {
-  const addToFavorites = (movie) => {
-    let newStorageArray = [movie];
-    const favoritesFromStorage = JSON.parse(localStorage.getItem("favorites"));
-    if (favoritesFromStorage) {
-      newStorageArray = [newStorageArray, ...favoritesFromStorage];
-    }
-    console.log(newStorageArray);
-
-    localStorage.setItem("favorites", JSON.stringify(newStorageArray));
-  };
 
   return (
     <div className="home">
@@ -34,7 +24,6 @@ const Home = ({
         ) : null}
         <MovieList
           movies={movies}
-          addToFavorites={addToFavorites}
           hasFavoritesButton={true}
         />
         {currentPosts.map((movie) => (
