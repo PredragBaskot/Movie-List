@@ -1,6 +1,5 @@
 import React from "react";
 import "./Home.css";
-
 import MovieListHeading from "../Movie/MovieListHeading";
 import MovieList from "../Movie/MovieList";
 import { Pagination } from "antd";
@@ -14,13 +13,14 @@ const Home = ({
   total,
   page,
 }) => {
+
   const addToFavorites = (movie) => {
     let newStorageArray = [movie];
     const favoritesFromStorage = JSON.parse(localStorage.getItem("favorites"));
     if (favoritesFromStorage) {
       newStorageArray = [newStorageArray, ...favoritesFromStorage];
     }
-    console.log(newStorageArray);
+
 
     localStorage.setItem("favorites", JSON.stringify(newStorageArray));
   };
@@ -29,14 +29,10 @@ const Home = ({
     <div className="home">
       <MovieListHeading />
       <div className="movieList">
-        {searchError ? (
-          <span style={{ color: "red" }}>{searchError} </span>
-        ) : null}
-        <MovieList
-          movies={movies}
+        {searchError ? <span style={{ color: 'red' }}>{searchError} </span> : null}
+        <MovieList movies={movies}
           addToFavorites={addToFavorites}
-          hasFavoritesButton={true}
-        />
+          hasFavoritesButton={true} />
         {currentPosts.map((movie) => (
           <div key={movie.imdbID}>{movie.Poster}</div>
         ))}
@@ -45,7 +41,7 @@ const Home = ({
           pageSize={postPerPage}
           total={total}
           current={page}
-          pageSizeOptions={[2, 5, 10]}
+          pageSizeOptions={[10, 50, 100]}
           showSizeChanger={true}
           responsive={true}
         />
