@@ -9,6 +9,7 @@ import Favorites from "./components/Favorites/Favorites";
 import Home from "./components/Home/Home.js";
 import Details from "./components/Details/Details";
 import MyBreadcrumb from "./components/Breadcrumb/Breadcrump";
+import { API_URL, API_KEY } from './constants';
 
 const { Header, Sider, Content } = Layout;
 
@@ -29,10 +30,13 @@ const App = () => {
   const [postPerPage] = useState(10);
   const [currentPosts] = useState([]);
 
+
+
+
+
   const getMovieRequest = async () => {
-    const url = `http://www.omdbapi.com/?apikey=ccb01116&s=${
-      searchValue || "white"
-    }&y=${year}&type=${type}&page=${page}`;
+    const url = `${API_URL}/?apikey=${API_KEY}&s=${searchValue || "white"
+      }&y=${year}&type=${type}&page=${page}`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
@@ -53,9 +57,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    // if (true) {
+
     getMovieRequest(searchValue);
-    // }
+
   }, [searchValue, year, type, page]);
 
   useEffect(() => {
@@ -68,6 +72,7 @@ const App = () => {
   return (
     <div className="App">
       <Layout>
+
         <Sider>
           <Sidebar onSelect={setYear} />
         </Sider>

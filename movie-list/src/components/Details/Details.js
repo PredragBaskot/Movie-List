@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AddFavourites from "../Favorites/AddFavourites";
 import "./Details.css";
+import { API_URL, API_KEY } from '../../constants';
 
 const Details = (props) => {
   const [movieDetails, setMovieDetails] = useState({});
@@ -10,7 +11,7 @@ const Details = (props) => {
   const params = useParams();
 
   const fetchById = async () => {
-    const url = `http://www.omdbapi.com/?apikey=ccb01116&i=${params.id}`;
+    const url = `${API_URL}/?apikey=${API_KEY}&i=${params.id}`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
@@ -25,6 +26,7 @@ const Details = (props) => {
       .slice(0, i)
       .concat(entries.slice(i + 2, entries.length));
     array.splice(9, 1);
+
     return array.map(([key, value]) => {
       return (
         <li>

@@ -2,8 +2,17 @@ import React from "react";
 import "./Movielist.css";
 import { Link } from "react-router-dom";
 import AddFavourites from "../Favorites/AddFavourites";
+import RemoveFavourites from "../Favorites/RemoveFavourites";
 
 const MovieList = (props) => {
+
+  const removeFromFavourites = (movie) => {
+    let newStorageArray = newStorageArray.filter(
+      (favourite) => favourite.imdbID !== movie.imdbID
+    );
+  };
+
+
 
   return (
     <>
@@ -23,7 +32,11 @@ const MovieList = (props) => {
             <div className="overlay">
               <AddFavourites movie={movie} />
             </div>
-          ) : null}
+          ) : <div className="overlay">
+            <RemoveFavourites
+              removeFavs={() => removeFromFavourites(movie)}
+            />
+          </div>}
         </div>
       ))}
     </>
