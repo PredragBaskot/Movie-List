@@ -2,6 +2,7 @@ import React from "react";
 import "./Movielist.css";
 import { Link } from "react-router-dom";
 import AddFavourites from "../Favorites/AddFavourites";
+import RemoveFavourites from "../Favorites/RemoveFavourites";
 
 const MovieList = (props) => {
   const addToFavorites = (movie) => {
@@ -10,12 +11,17 @@ const MovieList = (props) => {
     if (favoritesFromStorage) {
       newStorageArray = [...newStorageArray, ...favoritesFromStorage];
     }
-    console.log(newStorageArray);
 
-    // favoritesFromStorage.push(movie);
-    // console.log(favoritesFromStorage);
     localStorage.setItem("favorites", JSON.stringify(newStorageArray));
   };
+
+  const removeFromFavourites = (movie) => {
+    let newStorageArray = newStorageArray.filter(
+      (favourite) => favourite.imdbID !== movie.imdbID
+    );
+  };
+
+
 
   return (
     <>
@@ -35,7 +41,11 @@ const MovieList = (props) => {
             <div className="overlay">
               <AddFavourites onAdd={() => addToFavorites(movie)} />
             </div>
-          ) : null}
+          ) : <div className="overlay">
+            <RemoveFavourites
+              removeFavs={() => removeFromFavourites(movie)}
+            />
+          </div>}
         </div>
       ))}
     </>
