@@ -14,25 +14,19 @@ const Home = ({
   page,
 }) => {
 
-  const addToFavorites = (movie) => {
-    let newStorageArray = [movie];
-    const favoritesFromStorage = JSON.parse(localStorage.getItem("favorites"));
-    if (favoritesFromStorage) {
-      newStorageArray = [newStorageArray, ...favoritesFromStorage];
-    }
-
-
-    localStorage.setItem("favorites", JSON.stringify(newStorageArray));
-  };
 
   return (
     <div className="home">
       <MovieListHeading />
       <div className="movieList">
-        {searchError ? <span style={{ color: 'red' }}>{searchError} </span> : null}
-        <MovieList movies={movies}
-          addToFavorites={addToFavorites}
-          hasFavoritesButton={true} />
+        {searchError ? (
+          <span style={{ color: "red" }}>{searchError} </span>
+        ) : null}
+        <MovieList
+          movies={movies}
+          hasFavoritesButton={true}
+        />
+
         {currentPosts.map((movie) => (
           <div key={movie.imdbID}>{movie.Poster}</div>
         ))}

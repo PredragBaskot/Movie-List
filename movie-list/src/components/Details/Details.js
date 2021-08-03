@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import AddFavourites from "../Favorites/AddFavourites";
 import "./Details.css";
 import { API_URL, API_KEY } from '../../constants';
 
 const Details = (props) => {
   const [movieDetails, setMovieDetails] = useState({});
+  
 
   const params = useParams();
 
@@ -19,7 +21,6 @@ const Details = (props) => {
 
   const Details = () => {
     const entries = Object.entries(movieDetails); //retturns array of key- value
-
     const i = 13;
     const array = entries
       .slice(0, i)
@@ -40,10 +41,10 @@ const Details = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="details">
       <div className="imageDetailsLeft">
+        <div className="movie container">
         <img
-          className="slika"
           src={
             movieDetails.Poster === "N/A"
               ? "https://i.redd.it/ds1luav7dl851.jpg"
@@ -51,8 +52,15 @@ const Details = (props) => {
           }
           alt="movie"
         />
+        {props.hasFavoritesButton ? (
+        <div className="overlay">
+        <AddFavourites movie={movieDetails} />
+        </div>
+        ) : null}
+        </div>
         <h2>{movieDetails.Plot}</h2>
       </div>
+
       <div className="imageDetailsRight">
         <ul>
           <Details />

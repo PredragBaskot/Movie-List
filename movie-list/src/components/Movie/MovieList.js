@@ -5,15 +5,6 @@ import AddFavourites from "../Favorites/AddFavourites";
 import RemoveFavourites from "../Favorites/RemoveFavourites";
 
 const MovieList = (props) => {
-  const addToFavorites = (movie) => {
-    let newStorageArray = [movie];
-    const favoritesFromStorage = JSON.parse(localStorage.getItem("favorites"));
-    if (favoritesFromStorage) {
-      newStorageArray = [...newStorageArray, ...favoritesFromStorage];
-    }
-
-    localStorage.setItem("favorites", JSON.stringify(newStorageArray));
-  };
 
   const removeFromFavourites = (movie) => {
     let newStorageArray = newStorageArray.filter(
@@ -39,7 +30,7 @@ const MovieList = (props) => {
           </Link>
           {props.hasFavoritesButton ? (
             <div className="overlay">
-              <AddFavourites onAdd={() => addToFavorites(movie)} />
+              <AddFavourites movie={movie} />
             </div>
           ) : <div className="overlay">
             <RemoveFavourites

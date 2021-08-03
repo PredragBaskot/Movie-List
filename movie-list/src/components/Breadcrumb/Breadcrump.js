@@ -12,9 +12,6 @@ function MyBreadcrumb() {
         <Breadcrumb.Item>
           <a href="/favorites">Favorites</a>
         </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <a href="/details">Details</a>
-        </Breadcrumb.Item>
       </Breadcrumb>
     </div>
   );

@@ -5,8 +5,6 @@
 
 .movie {
   margin-bottom: 20px;
-}
-.movie {
   position: relative;
   transition: transform 0.1s;
   width: auto;
@@ -14,7 +12,7 @@
 
 .movie:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .movie:hover .overlay {
@@ -24,13 +22,13 @@
 .overlay {
   position: absolute;
   background: rgba(0, 0, 0, 0.4);
-  width: 93%;
+  width: 94%;
   left: 10px;
   height: 100px;
   transition: 0.5 ease;
   opacity: 0;
-  bottom: 0;
   font-size: 20px;
   padding: 2px;
   text-align: center;
+  bottom: 0px;
 }
