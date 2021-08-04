@@ -5,7 +5,7 @@ import { Menu } from "antd";
 
 const { SubMenu } = Menu;
 
-const Sidebar = ({ onSelect }) => {
+const Sidebar = ({ onSelect, setPage }) => {
   return (
     <div>
       <Menu mode="inline">
@@ -13,35 +13,50 @@ const Sidebar = ({ onSelect }) => {
           <Menu.Item
             key="2020"
             className="sub-menu"
-            onClick={() => onSelect("2020")}
+            onClick={() => {
+              onSelect("2020");
+              setPage(1);
+            }}
           >
             2020
           </Menu.Item>
           <Menu.Item
             key="2019"
             className="sub-menu"
-            onClick={() => onSelect("2019")}
+            onClick={() => {
+              onSelect("2019");
+              setPage(1);
+            }}
           >
             2019
           </Menu.Item>
           <Menu.Item
             key="2018"
             className="sub-menu"
-            onClick={() => onSelect("2018")}
+            onClick={() => {
+              onSelect("2018");
+              setPage(1);
+            }}
           >
             2018
           </Menu.Item>
           <Menu.Item
             key="2017"
             className="sub-menu"
-            onClick={() => onSelect("2017")}
+            onClick={() => {
+              onSelect("2017");
+              setPage(1);
+            }}
           >
             2017
           </Menu.Item>
           <Menu.Item
             key="2016"
             className="sub-menu"
-            onClick={() => onSelect("2016")}
+            onClick={() => {
+              onSelect("2016");
+              setPage(1);
+            }}
           >
             2016
           </Menu.Item>

@@ -4,15 +4,19 @@ import "./Searchbar.css";
 
 const { Search } = Input;
 
-const Searchbar = (props) => {
+const Searchbar = ({setPage, setSearchValue, searchValue}) => {
+
   return (
     <Space>
       <Search
         className="search"
         placeholder="Search movies"
         enterButton
-        value={props.value}
-        onChange={(event) => props.setSearchValue(event.target.value)}
+        value={searchValue}
+        onChange={(event) => {
+          setPage(1);
+          setSearchValue(event.target.value);
+        }}
       />
     </Space>
   );

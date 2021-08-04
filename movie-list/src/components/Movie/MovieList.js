@@ -13,7 +13,7 @@ const MovieList = (props) => {
             <img
               src={
                 movie.Poster === "N/A"
-                  ? "https://i.redd.it/ds1luav7dl851.jpg"
+                  ? "https://thumbs.dreamstime.com/z/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg"
                   : movie.Poster
               }
               alt="movie"

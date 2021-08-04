@@ -35,7 +35,7 @@ const Home = ({
           total={total}
           current={page}
           pageSizeOptions={[2, 5, 10]}
-          showSizeChanger={true}
+          showSizeChanger={false}
           responsive={true}
         />
       </div>

@@ -5,10 +5,11 @@ import "./AppHeader.css";
 
 const { Option } = Select;
 
-const AppHeader = ({ onSelect, types }) => {
+const AppHeader = ({ onSelect, types, setPage }) => {
   return (
     <>
       <Select
+        onClick={() => {setPage(1)}}
         defaultValue={types[0].label}
         className="btn-select"
         onSelect={onSelect}
