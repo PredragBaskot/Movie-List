@@ -13,14 +13,13 @@ const YEAR_FILTER_CHOICES = [
   2016,
 ];
 
-const Sidebar = ({ onSelect }) => {
+const Sidebar = ({ onSelect, setPage }) => {
   const [selectedYear, setSelectedYear] = useState(null);
 
 
   const handleClick = (e) => {
     setSelectedYear(e.key)
   };
-
 
   return (
 
@@ -36,11 +35,14 @@ const Sidebar = ({ onSelect }) => {
       >
 
         <SubMenu key="sub1" title="All movies" className="sub-menu">
+
           {YEAR_FILTER_CHOICES.map((year) => (
             <Menu.Item
               key={year}
               className="sub-menu"
-              onClick={() => onSelect(year)}
+              onClick={() => onSelect(year);
+                              setPage(1);
+            }
             >
               {year}
             </Menu.Item>

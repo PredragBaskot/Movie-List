@@ -47,7 +47,7 @@ const Details = (props) => {
         <img
           src={
             movieDetails.Poster === "N/A"
-              ? "https://i.redd.it/ds1luav7dl851.jpg"
+              ? "https://thumbs.dreamstime.com/z/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg"
               : movieDetails.Poster
           }
           alt="movie"

@@ -74,17 +74,18 @@ const App = () => {
       <Layout>
 
         <Sider>
-          <Sidebar onSelect={setYear} />
+          <Sidebar onSelect={setYear} setPage={setPage} />
         </Sider>
 
         <Layout>
           <Header>
             <MyBreadcrumb />
-            <AppHeader onSelect={setType} types={RESULT_TYPES} />
+            <AppHeader onSelect={setType} setPage={setPage} types={RESULT_TYPES} />
 
             <Searchbar
               searchValue={searchValue}
               setSearchValue={setSearchValue}
+              setPage={setPage}
             />
           </Header>
           <Router>

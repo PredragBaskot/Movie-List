@@ -35,8 +35,8 @@ const Home = ({
           pageSize={postPerPage}
           total={total}
           current={page}
-          pageSizeOptions={[10, 50, 100]}
-          showSizeChanger={true}
+          pageSizeOptions={[2, 5, 10]}
+          showSizeChanger={false}
           responsive={true}
         />
       </div>
