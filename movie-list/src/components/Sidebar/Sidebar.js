@@ -21,13 +21,17 @@ const Sidebar = ({ onSelect, setPage }) => {
     setSelectedYear(e.key)
   };
 
+  const handleClickPage = (year) => {
+    onSelect(year);
+    setPage(1);
+  }
+
   return (
 
     <div className="sidebarcomp">
 
       <Menu
         mode="inline"
-
         onClick={handleClick}
         style={{ width: 200 }}
         defaultOpenKeys={["sub1"]}
@@ -35,14 +39,11 @@ const Sidebar = ({ onSelect, setPage }) => {
       >
 
         <SubMenu key="sub1" title="All movies" className="sub-menu">
-
           {YEAR_FILTER_CHOICES.map((year) => (
             <Menu.Item
               key={year}
               className="sub-menu"
-              onClick={() => onSelect(year);
-                              setPage(1);
-            }
+              onClick={() => handleClickPage(year) }
             >
               {year}
             </Menu.Item>
