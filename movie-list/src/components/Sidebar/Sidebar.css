@@ -1,3 +1,7 @@
 .sub-menu:hover {
   background-color: lightgrey;
 }
+
+.sidebarcomp {
+  margin-right: 50px;
+}
