@@ -1,6 +1,5 @@
 import React from "react";
 import "./Home.css";
-
 import MovieListHeading from "../Movie/MovieListHeading";
 import MovieList from "../Movie/MovieList";
 import { Pagination } from "antd";
@@ -15,6 +14,7 @@ const Home = ({
   page,
 }) => {
 
+
   return (
     <div className="home">
       <MovieListHeading />
@@ -26,6 +26,7 @@ const Home = ({
           movies={movies}
           hasFavoritesButton={true}
         />
+
         {currentPosts.map((movie) => (
           <div key={movie.imdbID}>{movie.Poster}</div>
         ))}

@@ -26,7 +26,6 @@ const Sidebar = ({ onSelect, setPage }) => {
     setPage(1);
   }
 
-
   return (
 
     <div className="sidebarcomp">
@@ -41,7 +40,6 @@ const Sidebar = ({ onSelect, setPage }) => {
 
         <SubMenu key="sub1" title="All movies" className="sub-menu">
           {YEAR_FILTER_CHOICES.map((year) => (
-
             <Menu.Item
               key={year}
               className="sub-menu"
