@@ -13,8 +13,6 @@ const Home = ({
   total,
   page,
 }) => {
-
-
   return (
     <div className="home">
       <MovieListHeading />
@@ -22,10 +20,7 @@ const Home = ({
         {searchError ? (
           <span style={{ color: "red" }}>{searchError} </span>
         ) : null}
-        <MovieList
-          movies={movies}
-          hasFavoritesButton={true}
-        />
+        <MovieList movies={movies} hasFavoritesButton={true} />
 
         {currentPosts.map((movie) => (
           <div key={movie.imdbID}>{movie.Poster}</div>
