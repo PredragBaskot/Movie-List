@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "antd/dist/antd.css";
 import "./Sidebar.css";
 import { Menu } from "antd";
+import { Link } from "react-router-dom";
 
 const { SubMenu } = Menu;
 
@@ -43,14 +44,14 @@ const Sidebar = ({ onSelect, setPage }) => {
             <Menu.Item
               key={year}
               className="sub-menu"
-              onClick={() => handleClickPage(year) }
+              onClick={() => handleClickPage(year)}
             >
               {year}
             </Menu.Item>
           ))}
         </SubMenu>
         <Menu.Item key="favourites">
-          <a href="/favorites">Favourites</a>
+          <Link to="/favorites">Favourites</Link>
 
         </Menu.Item>
 
