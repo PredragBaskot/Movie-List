@@ -1,15 +1,27 @@
-import React, { useState } from "react";
-import { CheckCircleOutlined } from "@ant-design/icons";
+import React, { useState, useEffect } from "react";
 
 function AddFavourites({ movie }) {
   const [isFav, setIsFav] = useState(false);
 
-  // useEffect(() => {
-  //   //Dohvati iz local storage-a favorite, proveri da li je film iz propsa unutar tog local storage niza
-  //   //u odnosu na to settuje isFav promenljivu,
-  // }, []); //kada se use effect ponasa kao koja lifecycle metoda?
+  useEffect(() => {
+    let newStorageArray = [movie];
 
-  const addFavorite = () => {
+    const { imdbID } = movie;
+
+    const favoritesFromStorage = JSON.parse(localStorage.getItem("favorites")); //dohvatili smo favorite
+
+    if (favoritesFromStorage) {
+      const foundObject = favoritesFromStorage.find(
+        (movie) => movie.imdbID === imdbID
+      );
+
+      setIsFav(!!foundObject); //u odnosu na to settuje isFav promenljivu,
+      console.log(foundObject); // pronadji film po ID
+      newStorageArray = [...newStorageArray, ...favoritesFromStorage]; //Dohvati iz local storage-a favorite, proveri da li je film iz propsa unutar tog local storage niza
+    }
+  }, []); //kada se use effect ponasa kao koja lifecycle metoda?
+
+  const addFavorite = (index) => {
     let newStorageArray = [movie];
     const favoritesFromStorage = JSON.parse(localStorage.getItem("favorites"));
     if (favoritesFromStorage) {
