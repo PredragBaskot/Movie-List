@@ -6,7 +6,7 @@ import { API_URL, API_KEY } from '../../constants';
 
 const Details = (props) => {
   const [movieDetails, setMovieDetails] = useState({});
-  
+
 
   const params = useParams();
 
@@ -44,26 +44,28 @@ const Details = (props) => {
     <div className="details">
       <div className="imageDetailsLeft">
         <div className="movie container">
-        <img
-          src={
-            movieDetails.Poster === "N/A"
-              ? "https://thumbs.dreamstime.com/z/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg"
-              : movieDetails.Poster
-          }
-          alt="movie"
-        />
-        {props.hasFavoritesButton ? (
-        <div className="overlay">
-        <AddFavourites movie={movieDetails} />
-        </div>
-        ) : null}
+          <img
+            src={
+              movieDetails.Poster === "N/A"
+                ? "https://thumbs.dreamstime.com/z/no-image-available-icon-flat-vector-no-image-available-icon-flat-vector-illustration-132482953.jpg"
+                : movieDetails.Poster
+            }
+            alt="movie"
+          />
+          {props.hasFavoritesButton ? (
+            <div className="overlay">
+              <AddFavourites movie={movieDetails} />
+            </div>
+          ) : null}
         </div>
         <h2>{movieDetails.Plot}</h2>
       </div>
 
       <div className="imageDetailsRight">
         <ul>
+
           <Details />
+
         </ul>
       </div>
     </div>

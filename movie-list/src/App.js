@@ -31,9 +31,8 @@ const App = () => {
   const [currentPosts] = useState([]);
 
   const getMovieRequest = async () => {
-    const url = `${API_URL}/?apikey=${API_KEY}&s=${
-      searchValue || "white"
-    }&y=${year}&type=${type}&page=${page}`;
+    const url = `${API_URL}/?apikey=${API_KEY}&s=${searchValue || "white"
+      }&y=${year}&type=${type}&page=${page}`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
@@ -66,33 +65,33 @@ const App = () => {
 
   return (
     <div className="App">
-      <Layout>
-        <Sider>
-          <Sidebar onSelect={setYear} setPage={setPage} />
-        </Sider>
-
+      <Router>
         <Layout>
-          <Header>
-            <MyBreadcrumb />
-            <AppHeader
-              onSelect={setType}
-              setPage={setPage}
-              types={RESULT_TYPES}
-            />
+          <Sider>
+            <Sidebar onSelect={setYear} setPage={setPage} />
+          </Sider>
 
-            <Searchbar
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}
-              setPage={setPage}
-            />
-          </Header>
-          <Router>
+          <Layout>
+            <Header>
+              <MyBreadcrumb />
+              <AppHeader
+                onSelect={setType}
+                setPage={setPage}
+                types={RESULT_TYPES}
+              />
+
+              <Searchbar
+                searchValue={searchValue}
+                setSearchValue={setSearchValue}
+                setPage={setPage}
+              />
+            </Header>
             <Content>
               <div>
                 <Switch>
                   <Route
                     exact
-                    path="/home"
+                    path="/"
                     component={() => (
                       <Home
                         searchError={searchError}
@@ -114,9 +113,9 @@ const App = () => {
                 </Switch>
               </div>
             </Content>
-          </Router>
+          </Layout>
         </Layout>
-      </Layout>
+      </Router>
     </div>
   );
 };
