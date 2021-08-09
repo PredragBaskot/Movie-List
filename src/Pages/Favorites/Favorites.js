@@ -9,7 +9,7 @@ function Favorites() {
     const favoritesFromLocalStorage =
       JSON.parse(localStorage.getItem("favorites")) ?? [];
     setFavorites(favoritesFromLocalStorage);
-  }, []);
+  }, [favorites]);
 
   return (
     <div>
