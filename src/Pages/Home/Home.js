@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
-import MovieListHeading from "../Movie/MovieListHeading";
-import MovieList from "../Movie/MovieList";
+import MovieListHeading from "../../components/Movie/MovieListHeading";
+import MovieList from "../../components/Movie/MovieList";
 import { Pagination } from "antd";
 
 const Home = ({

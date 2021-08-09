@@ -16,7 +16,7 @@ function AddFavourites({ movie }) {
       );
 
       setIsFav(!!foundObject); //u odnosu na to settuje isFav promenljivu,
-      console.log(foundObject); // pronadji film po ID
+      // console.log(foundObject); // pronadji film po ID
       newStorageArray = [...newStorageArray, ...favoritesFromStorage]; //Dohvati iz local storage-a favorite, proveri da li je film iz propsa unutar tog local storage niza
     }
   }, []); //kada se use effect ponasa kao koja lifecycle metoda?

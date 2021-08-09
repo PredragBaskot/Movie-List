@@ -1,7 +1,7 @@
 import React from "react";
 import "./Movielist.css";
 import { Link } from "react-router-dom";
-import AddFavourites from "../Favorites/AddFavourites";
+import AddFavourites from "../../Pages/Favorites/AddFavourites";
 
 const MovieList = (props) => {
   return (

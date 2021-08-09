@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import MovieList from "../Movie/MovieList";
+import MovieList from "../../components/Movie/MovieList";
 import "./Favorites.css";
 
 function Favorites() {

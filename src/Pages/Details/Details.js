@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import AddFavourites from "../Favorites/AddFavourites";
 import "./Details.css";
-import { API_URL, API_KEY } from '../../constants';
+import { API_URL, API_KEY } from "../../constants";
 
 const Details = (props) => {
   const [movieDetails, setMovieDetails] = useState({});
-
 
   const params = useParams();
 
@@ -20,7 +19,7 @@ const Details = (props) => {
   };
 
   const Details = () => {
-    const entries = Object.entries(movieDetails); //retturns array of key- value
+    const entries = Object.entries(movieDetails); //returns array of key - value
     const i = 13;
     const array = entries
       .slice(0, i)
@@ -63,9 +62,7 @@ const Details = (props) => {
 
       <div className="imageDetailsRight">
         <ul>
-
           <Details />
-
         </ul>
       </div>
     </div>

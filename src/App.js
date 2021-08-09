@@ -5,9 +5,9 @@ import Searchbar from "./components/Searchbar/Searchbar";
 import AppHeader from "./components/AppHeader/AppHeader";
 import Sidebar from "./components/Sidebar/Sidebar";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Favorites from "./components/Favorites/Favorites";
-import Home from "./components/Home/Home.js";
-import Details from "./components/Details/Details";
+import Favorites from "./Pages/Favorites/Favorites";
+import Home from "./Pages/Home/Home";
+import Details from "./Pages/Details/Details";
 import MyBreadcrumb from "./components/Breadcrumb/Breadcrump";
 import { API_URL, API_KEY } from "./constants";
 
@@ -31,8 +31,9 @@ const App = () => {
   const [currentPosts] = useState([]);
 
   const getMovieRequest = async () => {
-    const url = `${API_URL}/?apikey=${API_KEY}&s=${searchValue || "white"
-      }&y=${year}&type=${type}&page=${page}`;
+    const url = `${API_URL}/?apikey=${API_KEY}&s=${
+      searchValue || "white"
+    }&y=${year}&type=${type}&page=${page}`;
 
     const response = await fetch(url);
     const responseJson = await response.json();
